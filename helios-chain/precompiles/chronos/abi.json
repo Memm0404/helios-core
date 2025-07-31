@@ -2,7 +2,28 @@
   "_format": "hh-sol-artifact-1",
   "contractName": "Chronos",
   "sourceName": "solidity/precompiles/chronos/Chronos.sol",
-  "abi": [
+  "abi": [const wallet = new ethers.Wallet(PRIVATE_KEY, provider);
+const cronContract = new ethers.Contract(cronAddress, cronABI, wallet);
+
+async function scheduleTask() {
+  const tx = await cronContract.createCron(
+    targetContractAddress,
+    JSON.stringify(targetContractABI),
+    "functionNameToCall",
+    [/* params if any */],
+    1, // Frequency in blocks
+    0, // Expiration block (0 means no expiration)
+    400000, // gasLimit
+    ethers.utils.parseUnits("2", "gwei"), // maxGasPrice
+    ethers.utils.parseEther("1") // amount to deposit (1 HLS)
+  );
+
+  await tx.wait();
+  console.log("Scheduled task created, transaction hash:", tx.hash);
+}
+
+scheduleTask().catch(console.error);
+
     {
       "anonymous": false,
       "inputs": [
