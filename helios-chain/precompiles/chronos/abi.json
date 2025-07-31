@@ -237,4 +237,28 @@
       "stateMutability": "nonpayable",
       "type": "function"
     },
-    { 
+    {
+      "inputs": [
+        {
+          "internalType": "uint64",
+          "name": "cronId",
+          "type": "uint64"
+        }
+      ],
+      "name": "cancelCron",
+      "outputs": [
+        {
+          "internalType": "bool",
+          "name": "success",
+          "type": "bool"
+        }
+      ],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    }
+  ],
+  "bytecode": "0x",
+  "deployedBytecode": "0x",
+  "linkReferences": {},
+  "deployedLinkReferences": {}
+}
